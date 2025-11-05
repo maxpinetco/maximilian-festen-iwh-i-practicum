@@ -1,0 +1,20 @@
+doctype html
+html 
+    head 
+        meta(charset="utf-8")
+        title=title 
+        link(rel="stylesheet", href="/css/style.css")
+    body 
+        a(href="/") Return to Home Page
+        h1 Add Book
+        form(action="/update-cobj" method="post") 
+            div
+                label(for="name") Book Title (Required)
+                input(type="text" id="book_title" name="book_title" Required)
+            div 
+                label(for="author") Book Author
+                input(type="text" id="book_author" name="book_author")
+            div 
+                label(for="description") Book Description
+                textarea(id="book_description" name="book_description") 
+            button (type="submit") Create
