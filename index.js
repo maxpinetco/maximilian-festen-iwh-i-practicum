@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
 
 app.post("/update-cobj", async (req, res) => {
   try {
-    const { blog_title, blog_author, blog_description } = req.body;
+    const { book_title, book_author, book_description } = req.body;
 
     await hs.post(`crm/v3/objects/${OBJECT_TYPE_ID}`, {
       properties: {
