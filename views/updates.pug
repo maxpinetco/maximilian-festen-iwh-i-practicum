@@ -5,26 +5,28 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
         title= "Add Book"
         link(rel="stylesheet", href="/css/style.css")
-    body 
+    body.form-page
         header.site-header
             .container
-                h1.header-actions
-                    a.button.button--ghost(href="/") Back to List
+                h1.header-actions Add Book
+                a.button.button--ghost(href="/") Back to List
         main.container
             .card
                 form.form(action="/update-cobj" method="post" novalidate)
                     .form-row
-                        label.form-label(for="title") Book Title <span class="req">*</span>
-                        input.form-input((type="text") id="book_title" name="book_title" required)
+                        label.form-label(for="title") Book Title<span class="req">*</span>
+                        input.form-input(type="text" id="book_title" name="book_title" required)
                         .help-text Enter Book Title Here.
                     .form-row
-                        label.form-label(for="author") Book Author <span class="req">*</span>
-                        input.form-input((type="text") id="book_author" name="book_author" required)
+                        label.form-label(for="author") Book Author<span class="req">*</span>
+                        input.form-input(type="text" id="book_author" name="book_author" required)
+                        .help-text Enter Book Author Here.
                     .form-row
-                        label.form-label(for="description") Book Description <span class="req">*</span>
+                        label.form-label(for="description") Book Description<span class="req">*</span>
                         textarea.form-textarea(id="book_description" name="book_description" rows="4")
+                        .help-text Enter Book Description Here.
                     .form-actions
-                        button.button--primary(type="submit") Save Book Info.
+                        button.button.button--primary(type="submit") Save Book Info.
                         a.button.button--ghost(href="/") Cancel
         footer.site-footer
             .container

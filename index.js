@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
-const { title } = require("process");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -45,15 +44,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/update-cobj", (req, res) => {
-  res.render("updates", {
-    title: "Update Custom Object Form | Integrating With HubSpot I Practicum",
-  });
-});
-
 app.post("/update-cobj", async (req, res) => {
   try {
-    const { name, author, summary } = req.body;
+    const { blog_title, blog_author, blog_description } = req.body;
 
     await hs.post(`crm/v3/objects/${OBJECT_TYPE_ID}`, {
       properties: {
