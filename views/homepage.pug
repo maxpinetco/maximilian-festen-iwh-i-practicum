@@ -2,24 +2,37 @@ doctype html
 html 
     head 
         meta(charset="utf-8")
-        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        title= #{title || "Books"}
         link(rel="stylesheet", href="/css/style.css")
     body
-        a(href="/update-cobj") Add to Table
-        h1 Book Table
-        if rows && rows.length
-            table(border="1" cellpadding="6")
-                thead
-                    tr
-                        th ID
-                            each p in properties
-                                th= p
-                tbody
-                    each row in rows
-                        tr
-                            td= row.id
-                            each p in properties
-                                td= row[p]
-        else
-            p No Records Found.
-    
+        header.site-header
+            .container 
+                h1.site-title Books 
+                nav.header-actions
+                    a.button.button--primary(href="/update-cobj") + Add New Book
+        main.container
+            if rows && rows.length
+                .card 
+                    .table-wrap
+                    h2.visually-hidden Books Table
+                    table.table
+                        thead
+                            tr 
+                                th(scope="col") ID
+                                    each p in properties
+                                        th(scope="col")= p
+                        tbody
+                            each row in rows    
+                                tr
+                                    td.mono= row.id
+                                        each p in properties
+                                            td= row[p] || '_'
+            else
+                .empty-state.card
+                    h2 No Records Yet
+                    p Add Your First Book to See it Listed here.
+                    a.button.button--primary(href="/update-cobj") Add your first Book
+        footer.site-footer
+            .container
+                small Integrating With HubSpot I Practicum
