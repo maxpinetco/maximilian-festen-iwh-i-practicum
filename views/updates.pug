@@ -2,19 +2,30 @@ doctype html
 html 
     head 
         meta(charset="utf-8")
-        title=title 
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        title= #{title || "Add Book"}
         link(rel="stylesheet", href="/css/style.css")
     body 
-        a(href="/") Return to Home Page
-        h1 Add Book
-        form(action="/update-cobj" method="post") 
-            div
-                label(for="name") Book Title (Required)
-                input(type="text" id="book_title" name="book_title" Required)
-            div 
-                label(for="author") Book Author
-                input(type="text" id="book_author" name="book_author")
-            div 
-                label(for="description") Book Description
-                textarea(id="book_description" name="book_description") 
-            button (type="submit") Create
+        header.site-header
+            .container
+                h1.header-actions
+                    a.button.button--ghost(href="/") Back to List
+        main.container
+            .card
+                form.form(action="/update-cobj" method="post" novalidate)
+                    .form-row
+                        label.form-label(for="title") Book Title <span class="req">*</span>
+                        input.form-input((type="text") id="book_title" name="book_title" required)
+                        .help-text Enter Book Title Here.
+                    .form-row
+                        label.form-label(for="author") Book Author <span class="req">*</span>
+                        input.form-input((type="text") id="book_author" name="book_author" required)
+                    .form-row
+                        label.form-label(for="description") Book Description <span class="req">*</span>
+                        textarea.form-textarea(id="book_description" name="book_description" rows="4")
+                    .form-actions
+                        button.button--primary(type="submit") Save Book Info.
+                        a.button.button--ghost(href="/") Cancel
+        footer.site-footer
+            .container
+                small Integrating With HubSpot I Practicum
